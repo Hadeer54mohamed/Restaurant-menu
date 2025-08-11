@@ -1,19 +1,20 @@
-"use client"
+"use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 
 const EmptyState = () => {
+  const t = useTranslations("EmptyState");
+
   return (
-    <div id="empty-state" className="text-center py-12">
+    <div id="empty-state" className="emptyStateContainer">
       <img
-        src="https://placehold.co/300x200?text=لا+نتائج"
-        alt="رمز اليدين يشير إلى عدم وجود نتائج للبحث"
-        className="mx-auto mb-4"
+        src="images/test.jpg"
+        alt={t("alt")}
+        className="emptyStateImage"
       />
-      <h3 className="text-xl font-bold text-gray-700">
-        لم نتمكن من العثور على ما تبحث عنه
-      </h3>
-      <p className="text-gray-500">جرب كلمات بحث أخرى أو تصفح فئة مختلفة</p>
+      <h3 className="emptyStateTitle">{t("title")}</h3>
+      <p className="emptyStateText">{t("description")}</p>
     </div>
   );
 };

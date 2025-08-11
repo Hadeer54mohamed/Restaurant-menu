@@ -1,27 +1,27 @@
-"use client"
+"use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 
 const About = () => {
+  const t = useTranslations("About");
+
   return (
-    <section id="about" className="bg-gray-100 py-12">
+    <section id="about" className="aboutSection">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-bold mb-6 text-center">عن مطعمنا</h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <h2 className="aboutTitle text-center">{t("title")}</h2>
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <img
-              src="https://placehold.co/600x400?text=مطعمنا"
-              alt="صورة داخلية للمطعم مع طاولات وزينة أنيقة"
-              className="rounded-lg shadow"
+              src="images/test.jpg"
+              alt="صورة داخلية للمطعم"
+              className="aboutImage"
             />
           </div>
-          <div className="flex flex-col justify-center">
-            <p className="mb-4">
-              مطعمنا يقدم أشهى الأطباق العربية والعالمية منذ عام 2010. نفتخر
-              بجودة مكوناتنا وطهاة ذوي خبرة واسعة.
-            </p>
-            <p>
-              نسعى دائماً لإرضاء زبائننا بتقديم أطباق مميزة في جو عائلي راقي.
+          <div className="aboutTextContainer">
+            <p className="flex items-center gap-3 mb-4">
+              <span className="text-2xl">🍽️</span>
+              {t("description")}
             </p>
           </div>
         </div>
