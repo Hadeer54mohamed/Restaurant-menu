@@ -23,7 +23,7 @@ html, body {
 }
 
 .filter-btn.active {
-  background-color: #3b82f6;
+  background-color: #e67e22;
   color: white;
 }
 
@@ -48,7 +48,7 @@ html, body {
   right: auto;
   left: 0.75rem;
 }.header-bg {
-  background-color: #5c3a21;
+  background: linear-gradient(to bottom, #4B2E16, #7B4A2D);
 }
 
 .logo-img {
@@ -147,7 +147,7 @@ html, body {
 .contactSection {
   padding-top: 3rem;  
   padding-bottom: 3rem;
-  background-color: #E67E22;
+  background: linear-gradient(to bottom, #e67e22, #d35400);
   color: white;
 }
 
@@ -315,7 +315,7 @@ html, body {
 }
 
 .filterButtonActive {
-  background-color: #E67E22;
+  background: linear-gradient(to bottom, #e67e22, #d35400);
   color: white;
   box-shadow: 0 4px 6px rgba(230, 126, 34, 0.4);
 }
@@ -330,7 +330,7 @@ html, body {
 }
 
 .footerSection {
-  background-color: #5C3A21;
+  background: linear-gradient(to bottom, #4B2E16, #7B4A2D);
   color: white;
   padding-top: 1.5rem; 
   padding-bottom: 1.5rem;
@@ -390,7 +390,7 @@ html, body {
   text-align: center;
 }
 .heroImageSection {
-  background-color: #E67E22;
+  background: linear-gradient(to bottom, #e67e22, #d35400);
   color: white;
   padding-top: 4rem; 
   padding-bottom: 4rem;
@@ -508,13 +508,13 @@ html, body {
   font-size: 2.25rem; 
   font-weight: 800; 
   margin-bottom: 1rem; 
-  color: #5C3A21;
+  background: linear-gradient(to bottom, #4B2E16, #7B4A2D);
 }
 
 .modal-description {
   font-size: 1.125rem; 
   margin-bottom: 1.5rem;
-  color: #5C3A21;
+background: linear-gradient(to bottom, #4B2E16, #7B4A2D);
 }
 
 .modal-price {
@@ -653,7 +653,7 @@ body {
 }
 
 .menu-item-button {
-  background-color: #E67E22;
+  background: linear-gradient(to bottom, #e67e22, #d35400);
   color: white;
   padding: 0.5rem 1.5rem; 
   border-radius: 9999px; 
