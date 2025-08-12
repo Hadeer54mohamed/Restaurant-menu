@@ -508,13 +508,11 @@ html, body {
   font-size: 2.25rem; 
   font-weight: 800; 
   margin-bottom: 1rem; 
-  background: linear-gradient(to bottom, #4B2E16, #7B4A2D);
 }
 
 .modal-description {
   font-size: 1.125rem; 
   margin-bottom: 1.5rem;
-background: linear-gradient(to bottom, #4B2E16, #7B4A2D);
 }
 
 .modal-price {
