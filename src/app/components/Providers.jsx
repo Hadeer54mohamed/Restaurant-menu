@@ -1,11 +1,11 @@
 "use client";
 
-import { CartProvider } from "./CartProvider";
+import QueryProvider from "../../../utils/QueryProvider";
 
 export function Providers({ children }) {
   return (
-    <CartProvider>
-      {children}
-    </CartProvider>
+   
+      <QueryProvider>{children}</QueryProvider>
+    
   );
 }

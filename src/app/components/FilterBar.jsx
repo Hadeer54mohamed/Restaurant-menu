@@ -1,48 +1,68 @@
-import { FiSearch } from "react-icons/fi";
-import { useTranslations } from "next-intl";
+"use client";
 
-export default function FilterBar({ filter, setFilter, search, setSearch }) {
+import { useTranslations, useLocale } from "next-intl";
+import { useQuery } from "@tanstack/react-query";
+import { getProducts } from "../../../services/getProducts";
+
+export default function FilterBar({ filter, setFilter }) {
   const t = useTranslations("FilterBar");
+  const locale = useLocale();
 
-  const categories = [
-    { key: "all", label: t("all") },
-    { key: "meals", label: t("meals") },
-    { key: "drinks", label: t("drinks") },
-    { key: "appetizers", label: t("appetizers") },
-    { key: "desserts", label: t("desserts") },
-  ];
+  const { data: products, isLoading } = useQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+    retry: 1,
+    refetchOnWindowFocus: false,
+  });
+
+  // استخراج تصنيفات من الوصف
+  const descriptionCategories = [];
+  if (Array.isArray(products)) {
+    const seenKeys = new Set();
+    for (const p of products) {
+      const ar = (p.description || "").trim();
+      const en = (p.description_en || "").trim();
+      const base = (ar || en);
+      if (!base) continue;
+      const key = base.toLowerCase();
+      if (seenKeys.has(key)) continue;
+      seenKeys.add(key);
+      descriptionCategories.push({ name_ar: ar || en, name_en: en || ar });
+    }
+  }
 
   return (
     <section id="menu" className="filterBarSection">
       <div className="filterButtonsContainer">
-        {categories.map((cat) => (
-          <button
-            key={cat.key}
-            onClick={() => setFilter(cat.key)}
-            className={`filterButton ${
-              filter === cat.key ? "filterButtonActive" : "filterButtonInactive"
-            }`}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
+        <button
+          type="button"
+          className={`filterButton ${filter === "all" ? "filterButtonActive" : "filterButtonInactive"}`}
+          onClick={() => setFilter("all")}
+        >
+          {t("all")}
+        </button>
 
-      {/* حقل البحث */}
-      {/*
-      <div className="searchInputContainer">
-        <input
-          type="text"
-          placeholder={t("searchPlaceholder")}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="searchInput"
-        />
-        <span className="searchIcon">
-          <FiSearch />
-        </span>
+        {isLoading && (
+          <button type="button" className="filterButton filterButtonInactive" disabled>
+            ...
+          </button>
+        )}
+
+        {!isLoading && descriptionCategories.map((cat, idx) => {
+          const label = locale === "ar" ? cat.name_ar : (cat.name_en || cat.name_ar);
+          const isActive = typeof filter === "object" && filter?.name_ar === cat.name_ar && filter?.name_en === cat.name_en;
+          return (
+            <button
+              key={`${idx}-${label}`}
+              type="button"
+              className={`filterButton ${isActive ? "filterButtonActive" : "filterButtonInactive"}`}
+              onClick={() => setFilter({ name_ar: cat.name_ar, name_en: cat.name_en })}
+            >
+              {label}
+            </button>
+          );
+        })}
       </div>
-      */}
     </section>
   );
 }
