@@ -9,12 +9,10 @@
   "about": "عن المطعم",
   "contact": "اتصل بنا",
   "languageToggle": "English",
-     "detailsbtn": "تفاصيل",
-     "priceLabel": "السعر",
-     "currency": "ج.م",   
-
-     
-     "FilterBar": {
+  "detailsbtn": "تفاصيل",
+  "priceLabel": "السعر",
+  "currency": "ج.م",
+  "FilterBar": {
       "all": "الكل",
       "meals": "الوجبات",
       "drinks": "المشروبات",

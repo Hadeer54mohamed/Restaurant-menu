@@ -3,51 +3,53 @@ import { useTranslations, useLocale } from 'next-intl';
 export default function MenuItem({ item, onOpenDetails, hidePrice }) {
   const t = useTranslations('');
   const locale = useLocale();
-  
-  console.log("MenuItem rendering with item:", item);
-  
-  // Check if item exists and has required properties
-  if (!item || !item.name) {
-    console.log("MenuItem: Invalid item, returning null");
-    return null;
-  }
-  
-  // تحديد النص حسب اللغة
+
+  if (!item || !item.name) return null;
+
   const displayName = locale === 'ar' ? item.name : (item.name_en || item.name);
   const displayDescription = locale === 'ar' ? item.description : (item.description_en || item.description);
-  const displayType = locale === 'ar' ? item.type : (item.type_en || item.type);
-  
-  // الحصول على السعر المخفض إذا كان متوفراً
+
   const hasOfferPrice = item.fullData?.sizes?.some(size => size.offer_price);
   const firstSize = item.fullData?.sizes?.[0];
-  
+
   return (
-    <div className="menu-item">
+<div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition flex flex-col items-center p-6">
+{/* صورة المنتج */}
       <img
-        src={item.image || '/images/food.jpg'}
-        alt={displayName}
-        className="menu-item-image"
-        onError={(e) => {
-          e.target.src = '/images/food.jpg';
-        }}
-      />
-      <h3 className="menu-item-title">{displayName}</h3>
-      <p className="menu-item-description">{displayDescription || ''}</p>
+  src={item.image || '/images/food.jpg'}
+  alt={displayName}
+  onError={(e) => (e.target.src = '/images/food.jpg')}
+  className="w-40 h-40 object-cover rounded-full border-2 border-white shadow-md mt-4"
+/>
+
+      {/* اسم المنتج */}
+      <h3 className="mt-4 text-lg font-bold text-[#5C3A21] text-center">
+        {displayName}
+      </h3>
+
+      {/* الوصف */}
+      <p className="mt-2 text-sm text-gray-500 text-center line-clamp-2">
+        {displayDescription || ''}
+      </p>
+
+      {/* السعر */}
       {!hidePrice && (item.price || firstSize?.price) && (
-        <div className="menu-item-price-container">
+        <div className="mt-3 text-center">
           {hasOfferPrice && firstSize?.offer_price && (
-            <span className="menu-item-offer-price">
+            <div className="text-[#E67E22] font-semibold text-lg">
               {firstSize.offer_price} {t("currency")}
-            </span>
+            </div>
           )}
-          <span className="menu-item-price">
+          <div className="text-gray-600">
             {t("priceLabel")}: {firstSize?.price || item.price} {t("currency")}
-          </span>
+          </div>
         </div>
       )}
+
+      {/* زر التفاصيل */}
       <button
         onClick={() => onOpenDetails(item)}
-        className="menu-item-button"
+        className="mt-4 bg-[#E67E22] text-white px-5 py-2 rounded-full shadow hover:bg-[#cf6d1a] transition"
       >
         {t('detailsbtn')}
       </button>

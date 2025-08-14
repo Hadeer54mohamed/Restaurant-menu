@@ -5,7 +5,7 @@ import { NextIntlClientProvider } from 'next-intl';
 
 export const metadata = {
   title: 'مطعمنا',
-  description: 'منيو مطعم عربي مع بحث وفلترة',
+  description: 'منيو مطعم ',
 };
 
 export default async function RootLayout({ children, params }) {

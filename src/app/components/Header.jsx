@@ -9,7 +9,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Header() {
   const locale = useLocale();
-  const t = useTranslations();
+  const t = useTranslations("");
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);

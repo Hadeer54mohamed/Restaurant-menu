@@ -9,11 +9,10 @@
   "about": "About",
   "contact": "Contact",
   "languageToggle": "العربية",
-    "detailsbtn": "Details",
-    "priceLabel": "Price",
+  "detailsbtn": "Details",
+  "priceLabel": "Price",
   "currency": "EGP",
-  
-    "FilterBar": {
+  "FilterBar": {
       "all": "All",
       "meals": "Meals",
       "drinks": "Drinks",

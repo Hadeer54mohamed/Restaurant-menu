@@ -701,8 +701,8 @@ html, body {
 
 
 body {
-  background-color: #FFF8F0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--color-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
@@ -1043,4 +1043,40 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+:root {
+  --color-primary: #8B5E3C; /* بني */
+  --color-secondary: #E3C9A8; /* بيج */
+  --color-bg: #FFF8F0; /* خلفية فاتحة */
+  --color-accent: #C97B3A; /* لون تمييز */
+  --color-dark: #3E2723; /* بني غامق */
+}
+
+.card {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 1rem;
+  text-align: center;
+}
+
+.card img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+}
+
+.button-primary {
+  background: var(--color-accent);
+  color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.button-primary:hover {
+  background: #a85a1f;
 }
