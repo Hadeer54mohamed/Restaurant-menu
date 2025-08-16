@@ -4,7 +4,7 @@ import {routing} from "../../i18n/routing";
 import { NextIntlClientProvider } from 'next-intl';
 
 export const metadata = {
-  title: 'مطعمنا',
+  title: 'Flower Terrace',
   description: 'منيو مطعم ',
 };
 
